@@ -8,7 +8,7 @@ import glob
 import os
 import asyncio
 
-logger = logging.getLogger('discord')
+logger = logging.getLogger('bot.main')
 logger.setLevel(logging.DEBUG)
 logging.getLogger('discord.http').setLevel(logging.INFO)
 
@@ -28,7 +28,8 @@ logger.addHandler(sh)
 
 cogs = glob.glob('cogs/*.py')
 if len(cogs) > 0:
-    cogs = [cog.replace('/', '.').replace('.py', '') for cog in cogs]
+    cogs = [cog.replace('\\', '.').replace('.py', '') for cog in cogs]
+print(cogs)
 
 class CPBaseManager(commands.Bot):
     def __init__(self, *, prefix, intents: discord.Intents) -> None:
