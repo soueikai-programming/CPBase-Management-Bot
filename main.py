@@ -45,7 +45,7 @@ async def main():
         logger.info('🚽分散機能を有効化中...')
         for cog in cogs:
             logger.debug(f'🔧{cog}を有効化中...')
-            bot.load_extension(cog)
+            await bot.load_extension(cog)
             logger.debug(f'🔧{cog}が有効になりました！')
     
     await bot.start(token=os.environ.get('CPBaseManagementBot_TOKEN', ''))
