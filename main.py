@@ -37,7 +37,8 @@ class CPBaseManager(commands.Bot):
         logger.info('🚽根幹システムを有効化中...')
 
     async def on_ready(self):
-        await self.change_presence(activity=discord.Game('起動日時: ' + datetime.datetime.now().strftime('%Y/%m/%d %H:%M:%S')))
+        await self.tree.sync()
+        await self.change_presence(status=discord.Status.idle, activity=discord.Game('起動日時: ' + datetime.datetime.now().strftime('%Y/%m/%d %H:%M:%S')))
         logger.info('✨Botがオンラインになりました！')
 
 async def main():
