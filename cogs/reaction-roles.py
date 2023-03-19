@@ -30,6 +30,9 @@ class ReactionRolesCog(commands.Cog):
         message = await self.bot.get_channel(1065672913388326922).fetch_message(1068367226471727104)
         for reaction in ["1️⃣", "2️⃣", "3️⃣", "4️⃣", "5️⃣"]:
             await message.add_reaction(reaction)
+        message2 = await self.bot.get_channel(1065672913388326922).fetch_message(1087012378178228316)
+        for reaction in ["1️⃣", "2️⃣", "3️⃣", "4️⃣", "5️⃣", "6️⃣"]:
+            await message2.add_reaction(reaction)
 
     @commands.Cog.listener()
     async def on_raw_reaction_add(self, payload: discord.RawReactionActionEvent):
@@ -57,6 +60,36 @@ class ReactionRolesCog(commands.Cog):
             
             elif payload.emoji.name == "5️⃣":
                 await member.add_roles(guild.get_role(1068365932566683680), reason="Reaction Role")
+            
+            logger.info('Reaction Roles: ' + member.name + ' added ' + payload.emoji.name + ' to ' + member.name + ' in ' + guild.name + '')
+        
+        elif payload.message_id == 1087012378178228316:
+            guild = self.bot.get_guild(payload.guild_id)
+            
+            member = guild.get_member(payload.user_id)
+            if member.bot:
+                return
+            
+            if 1087008631008006225 not in member.roles:
+                await member.add_roles(guild.get_role(1087008631008006225), reason="Reaction Role")
+
+            if payload.emoji.name == "1️⃣":
+                await member.add_roles(guild.get_role(1087008735488131202), reason="Reaction Role")
+
+            elif payload.emoji.name == "2️⃣":
+                await member.add_roles(guild.get_role(1087008977231040643), reason="Reaction Role")
+
+            elif payload.emoji.name == "3️⃣":
+                await member.add_roles(guild.get_role(1087008818665373848), reason="Reaction Role")
+            
+            elif payload.emoji.name == "4️⃣":
+                await member.add_roles(guild.get_role(1087009270442242078), reason="Reaction Role")
+            
+            elif payload.emoji.name == "5️⃣":
+                await member.add_roles(guild.get_role(1087009391754100848), reason="Reaction Role")
+            
+            elif payload.emoji.name == "6️⃣":
+                await member.add_roles(guild.get_role(1087013703649599609), reason="Reaction Role")
             
             logger.info('Reaction Roles: ' + member.name + ' added ' + payload.emoji.name + ' to ' + member.name + ' in ' + guild.name + '')
     
@@ -92,6 +125,41 @@ class ReactionRolesCog(commands.Cog):
                 and 1068365759635521637 not in member.roles 
                 and 1068365932566683680 not in member.roles):
                 await member.remove_roles(guild.get_role(987370945016639558), reason="Reaction Role")
+        
+        elif payload.message_id == 1087012378178228316:
+            guild = self.bot.get_guild(payload.guild_id)
+
+            member = guild.get_member(payload.user_id)
+            if member.bot:
+                return
+            
+            if payload.emoji.name == "1️⃣":
+                await member.remove_roles(guild.get_role(1087008735488131202), reason="Reaction Role")
+
+            elif payload.emoji.name == "2️⃣":
+                await member.remove_roles(guild.get_role(1087008977231040643), reason="Reaction Role")
+
+            elif payload.emoji.name == "3️⃣":
+                await member.remove_roles(guild.get_role(1087008818665373848), reason="Reaction Role")
+            
+            elif payload.emoji.name == "4️⃣":
+                await member.remove_roles(guild.get_role(1087009270442242078), reason="Reaction Role")
+            
+            elif payload.emoji.name == "5️⃣":
+                await member.remove_roles(guild.get_role(1087009391754100848), reason="Reaction Role")
+            
+            elif payload.emoji.name == "6️⃣":
+                await member.remove_roles(guild.get_role(1087013703649599609), reason="Reaction Role")
+            
+            logger.info('Reaction Roles: ' + member.name + ' removed ' + payload.emoji.name + ' from ' + member.name + ' in ' + guild.name + '')
+
+            if (1087008735488131202 not in member.roles 
+                and 1087008977231040643 not in member.roles 
+                and 1087008818665373848 not in member.roles 
+                and 1087009270442242078 not in member.roles 
+                and 1087009391754100848 not in member.roles
+                and 1087013703649599609 not in member.roles):
+                await member.remove_roles(guild.get_role(1087008631008006225), reason="Reaction Role")
 
 
 async def setup(bot):
