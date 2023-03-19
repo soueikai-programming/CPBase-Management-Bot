@@ -61,6 +61,9 @@ class ReactionRolesCog(commands.Cog):
             elif payload.emoji.name == "5️⃣":
                 await member.add_roles(guild.get_role(1068365932566683680), reason="Reaction Role")
             
+            else:
+                return
+            
             logger.info('Reaction Roles: ' + member.name + ' added ' + payload.emoji.name + ' to ' + member.name + ' in ' + guild.name + '')
         
         elif payload.message_id == 1087012378178228316:
@@ -91,6 +94,9 @@ class ReactionRolesCog(commands.Cog):
             elif payload.emoji.name == "6️⃣":
                 await member.add_roles(guild.get_role(1087013703649599609), reason="Reaction Role")
             
+            else:
+                return
+            
             logger.info('Reaction Roles: ' + member.name + ' added ' + payload.emoji.name + ' to ' + member.name + ' in ' + guild.name + '')
     
     @commands.Cog.listener()
@@ -116,6 +122,9 @@ class ReactionRolesCog(commands.Cog):
             
             elif payload.emoji.name == "5️⃣":
                 await member.remove_roles(guild.get_role(1068365932566683680), reason="Reaction Role")
+            
+            else:
+                return
             
             logger.info('Reaction Roles: ' + member.name + ' removed ' + payload.emoji.name + ' from ' + member.name + ' in ' + guild.name + '')
 
@@ -150,6 +159,9 @@ class ReactionRolesCog(commands.Cog):
             
             elif payload.emoji.name == "6️⃣":
                 await member.remove_roles(guild.get_role(1087013703649599609), reason="Reaction Role")
+
+            else:
+                return
             
             logger.info('Reaction Roles: ' + member.name + ' removed ' + payload.emoji.name + ' from ' + member.name + ' in ' + guild.name + '')
 
