@@ -63,11 +63,10 @@ class ReactionRolesCog(commands.Cog):
             
             elif payload.emoji.name == "6️⃣":
                 await member.add_roles(guild.get_role(1108033720830656562), reason="Reaction Role")
-            
+
             elif payload.emoji.name == "7️⃣":
                 await member.add_roles(guild.get_role(1173294328337158204), reason="Reaction Role")
             
-
             else:
                 return
             
@@ -135,7 +134,7 @@ class ReactionRolesCog(commands.Cog):
             
             elif payload.emoji.name == "7️⃣":
                 await member.remove_roles(guild.get_role(1173294328337158204), reason="Reaction Role")
-            
+
             else:
                 return
             
