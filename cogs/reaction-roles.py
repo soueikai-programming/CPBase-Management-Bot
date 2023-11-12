@@ -28,7 +28,7 @@ class ReactionRolesCog(commands.Cog):
     @commands.Cog.listener()
     async def on_ready(self):
         message = await self.bot.get_channel(1065672913388326922).fetch_message(1068367226471727104)
-        for reaction in ["1️⃣", "2️⃣", "3️⃣", "4️⃣", "5️⃣", "6️⃣"]:
+        for reaction in ["1️⃣", "2️⃣", "3️⃣", "4️⃣", "5️⃣", "6️⃣", "7️⃣"]:
             await message.add_reaction(reaction)
         message2 = await self.bot.get_channel(1065672913388326922).fetch_message(1087012378178228316)
         for reaction in ["1️⃣", "2️⃣", "3️⃣", "4️⃣", "5️⃣", "6️⃣"]:
@@ -63,6 +63,10 @@ class ReactionRolesCog(commands.Cog):
             
             elif payload.emoji.name == "6️⃣":
                 await member.add_roles(guild.get_role(1108033720830656562), reason="Reaction Role")
+
+            elif payload.emoji.name == "7️⃣":
+                await member.add_roles(guild.get_role(1173294328337158204), reason="Reaction Role")
+            
             else:
                 return
             
@@ -128,6 +132,9 @@ class ReactionRolesCog(commands.Cog):
             elif payload.emoji.name == "6️⃣":
                 await member.remove_roles(guild.get_role(1108033720830656562), reason="Reaction Role")
             
+            elif payload.emoji.name == "7️⃣":
+                await member.remove_roles(guild.get_role(1173294328337158204), reason="Reaction Role")
+
             else:
                 return
             
@@ -138,7 +145,8 @@ class ReactionRolesCog(commands.Cog):
                 and 1068365691054465076 not in member.roles 
                 and 1068365759635521637 not in member.roles 
                 and 1068365932566683680 not in member.roles
-                and 1108033720830656562 not in member.roles):
+                and 1108033720830656562 not in member.roles
+                and 1173294328337158204 not in member.roles):
                 await member.remove_roles(guild.get_role(987370945016639558), reason="Reaction Role")
         
         elif payload.message_id == 1087012378178228316:
